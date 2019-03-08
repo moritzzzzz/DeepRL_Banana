@@ -16,6 +16,7 @@ This projects goal is to utilize Deep Reinforcement Learning (DRL) to train an a
 A trained agent will can be seen in below image: 
 
 ![Trained Agent][image1]
+
 (source: https://github.com/udacity/deep-reinforcement-learning/blob/master/p1_navigation/README.md)
 
 ### Environment
@@ -74,12 +75,14 @@ The same goal can also be reached by analyzing an image of what is in front of t
 
 There are 2 approaches to this:
 
-Easy approach:
+#### Easy approach:
+
 Take the same agent and same model (fully connected layers). For this to not overload your memory, the state space needs to be shrinked. 
 84x84x3 = 21168 features. This combined with multiple fully connected layers will consume vast amounts of memory.
 Therefore the central region of the image (state) is cropped and 2 color channels are removed. The result is then flattened to a 1-d vector that can serve as input for the model (of fully connected layers).
 
-New approach:
+#### New approach:
+
 Change the model to use convolutional layers, instead of fully connected layers. Convolutional layers make sense, as we are trying to extract information from image data. Good thing: We only would have to normalize the pixel values, but the dimensions of the image array (state) can be fed without adjustment into the model. Therfore merely the learning function in the Jupyter notebook and the model in model.py would have to be altered.
 
 This should yield a better performance than the easy approach.
