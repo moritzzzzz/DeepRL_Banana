@@ -61,20 +61,37 @@ The following system prerequisites are required to get it running with my instru
 
 ### Instructions
 
-Follow the instructions in `Navigation.ipynb` to get started with training your own agent!  
+Follow the instructions in `Navigation.ipynb` to train the agent!
 
-### (Optional) Challenge: Learning from Pixels
+### Expected Result
+After approximately 2600 training episodes the agent will reach the average score of +13, which defines this environment as solved.
+The current model will allow the agent to improve up to an average score of approximately +16, which can be reached after approximately 4500 episodes.
 
-After you have successfully completed the project, if you're looking for an additional challenge, you have come to the right place!  In the project, your agent learned from information such as its velocity, along with ray-based perception of objects around its forward direction.  A more challenging task would be to learn directly from pixels!
 
-To solve this harder task, you'll need to download a new Unity environment.  This environment is almost identical to the project environment, where the only difference is that the state is an 84 x 84 RGB image, corresponding to the agent's first-person view.  (**Note**: Udacity students should not submit a project with this new environment.)
+### Learning from Pixels
 
-You need only select the environment that matches your operating system:
-- Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/VisualBanana_Linux.zip)
-- Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/VisualBanana.app.zip)
-- Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/VisualBanana_Windows_x86.zip)
-- Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/VisualBanana_Windows_x86_64.zip)
+The same goal can also be reached by analyzing an image of what is in front of the agent. This image has a resolution of 84x84 in 3 color channels. So overall dimensions 84x84x3.
 
-Then, place the file in the `p1_navigation/` folder in the DRLND GitHub repository, and unzip (or decompress) the file.  Next, open `Navigation_Pixels.ipynb` and follow the instructions to learn how to use the Python API to control the agent.
+There are 2 approaches to this:
 
-(_For AWS_) If you'd like to train the agent on AWS, you must follow the instructions to [set up X Server](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md), and then download the environment for the **Linux** operating system above.
+Easy approach:
+Take the same agent and same model (fully connected layers). For this to not overload your memory, the state space needs to be shrinked. 
+84x84x3 = 21168 features. This combined with multiple fully connected layers will consume vast amounts of memory.
+Therefore the central region of the image (state) is cropped and 2 color channels are removed. The result is then flattened to a 1-d vector that can serve as input for the model (of fully connected layers).
+
+New approach:
+Change the model to use convolutional layers, instead of fully connected layers. Convolutional layers make sense, as we are trying to extract information from image data. Good thing: We only would have to normalize the pixel values, but the dimensions of the image array (state) can be fed without adjustment into the model. Therfore merely the learning function in the Jupyter notebook and the model in model.py would have to be altered.
+
+This should yield a better performance than the easy approach.
+
+Problem: I did not yet implement this second option.
+
+### Instructions to reproduce approach 1
+
+Download a new Unity environment.  This environment is almost identical to the project environment, where the only difference is that the state is an 84 x 84 RGB image, corresponding to the agent's first-person view. 
+
+Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/VisualBanana_Windows_x86_64.zip)
+
+Place the file in the `p1_navigation/` folder in the DRLND GitHub repository, and unzip (or decompress) the file.  Next, open `Navigation_Pixels.ipynb` and follow the instructions to learn how to use the Python API to control the agent.
+
+Follow the instructions in `Navigation_Pixels.ipynb`
