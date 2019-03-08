@@ -2,7 +2,7 @@
 DRL Agent to collect Bananas in Unity environment
 
 
-# Project: Navigation in a banana world
+# Project: Navigation in a Banana World
 
 ### Intro
 
