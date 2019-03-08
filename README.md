@@ -47,15 +47,15 @@ The following system prerequisites are required to get it running with my instru
 
 - Set up conda environment with Python >=3.6
 	Conda create –name <env_name> python=3.6
--Install Jupyter Kernel for this new environment.
+- Install Jupyter Kernel for this new environment.
     python -m ipykernel install --user --name <Kernel_name> --display-name "<kernel_name>".
--Download ML-Agents Toolkit beta 0.4.0a.
+- Download ML-Agents Toolkit beta 0.4.0a.
     https://github.com/Unity-Technologies/ml-agents/releases/tag/0.4.0a
 - install it by running following command, with activated conda environment in the directory of ml-agents, that contains the setup.py.
     pip install -e . .
--install PyTorch.
+- install PyTorch.
     conda install pytorch torchvision cudatoolkit=9.0 -c pytorch.
--Get Unity Environment designed for this Banana project.
+- Get Unity Environment designed for this Banana project.
     Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip).
     Place the file in the DRLND GitHub repository, in the `p1_navigation/` folder, and unzip (or decompress) the file. 
 
