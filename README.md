@@ -2,7 +2,7 @@
 DRL Agent to collect Bananas in Unity environment
 
 
-# Project Navigation through a banana world
+# Project: Navigation in a banana world
 
 ### Intro
 
@@ -18,19 +18,31 @@ A trained agent will can be seen in below image:
 ![Trained Agent][image1]
 (source: https://github.com/udacity/deep-reinforcement-learning/blob/master/p1_navigation/README.md)
 
+### Environment
+In RL the environment defines what the agent will learn. In this case the environment allows the agent to choose between 4 actions in each timesequence:
 
-
-A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana.  Thus, the goal of your agent is to collect as many yellow bananas as possible while avoiding blue bananas.  
-
-The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around agent's forward direction.  Given this information, the agent has to learn how to best select actions.  Four discrete actions are available, corresponding to:
 - **`0`** - move forward.
 - **`1`** - move backward.
 - **`2`** - turn left.
 - **`3`** - turn right.
 
-The task is episodic, and in order to solve the environment, your agent must get an average score of +13 over 100 consecutive episodes.
+The state space in contrast is not discrete, but continuous and is perceived by the agent in 37 dimensions. (37 continuous input features)
 
-### Getting Started
+The rewards of the environment, which serve as reinforcement for the agent to learn, are assigned when a its rules are fullfilled:
+
+A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana.  Thereby the agent will learn to avoid blue bananas while collecting yellow bananas.
+
+The task is episodic. To solve the problem the average score must exceed +13 for at least 100 episodes.
+
+### How to use this Github repository to train an agent to solve the banana world
+
+The following system prerequisites are required to get it running with my instructions:
+
+- Windows 10 64-Bit
+- Anaconda for Windows
+- GPU with CUDA support(this will not run on CPU only, as its explicitly disabled)
+
+The environment 
 
 1. Download the environment from one of the links below.  You need only select the environment that matches your operating system:
     - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
