@@ -28,7 +28,7 @@ In RL the environment defines what the agent will learn. In this case the enviro
 
 The state space in contrast is not discrete, but continuous and is perceived by the agent in 37 dimensions. (37 continuous input features)
 
-The rewards of the environment, which serve as reinforcement for the agent to learn, are assigned when a its rules are fullfilled:
+The rewards of the environment, which serve as reinforcement for the agent to learn, are assigned when its rules are fullfilled:
 
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana.  Thereby the agent will learn to avoid blue bananas while collecting yellow bananas.
 
@@ -41,20 +41,23 @@ The following system prerequisites are required to get it running with my instru
 - Windows 10 64-Bit
 - Anaconda for Windows
 - GPU with CUDA support(this will not run on CPU only, as its explicitly disabled)
+    Cudatoolkit version 9.0
 
-The environment 
+#### Setting up the Anaconda environment
 
-1. Download the environment from one of the links below.  You need only select the environment that matches your operating system:
-    - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
-    - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
-    - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)
-    - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
-    
-    (_For Windows users_) Check out [this link](https://support.microsoft.com/en-us/help/827218/how-to-determine-whether-a-computer-is-running-a-32-bit-version-or-64) if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.
-
-    (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux_NoVis.zip) to obtain the environment.
-
-2. Place the file in the DRLND GitHub repository, in the `p1_navigation/` folder, and unzip (or decompress) the file. 
+- Set up conda environment with Python >=3.6
+	Conda create –name <env_name> python=3.6
+-Install Jupyter Kernel for this new environment
+    python -m ipykernel install --user --name <Kernel_name> --display-name "<kernel_name>"
+-Download ML-Agents Toolkit beta 0.4.0a
+    https://github.com/Unity-Technologies/ml-agents/releases/tag/0.4.0a
+- install it by running following command, with activated conda environment in the directory of ml-agents, that contains the setup.py
+    pip install -e .
+-install PyTorch
+    conda install pytorch torchvision cudatoolkit=9.0 -c pytorch
+-Get Unity Environment designed for this Banana project
+    Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
+    Place the file in the DRLND GitHub repository, in the `p1_navigation/` folder, and unzip (or decompress) the file. 
 
 ### Instructions
 
